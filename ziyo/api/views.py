@@ -11,6 +11,7 @@ class ArticleView(ModelViewSet):
     queryset = models.Article.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['category', 'category__title', 'status', 'type', 'top']
+
     def get_serializer_class(self):
         if self.request.method in SAFE_METHODS:
             return serializers.ArticleDetailSerializer
@@ -32,7 +33,7 @@ class CategoryView(ModelViewSet):
             return serializers.CategoryDetailSerializer
         return serializers.CategorySerializer
 
-    
+
 class TvView(ModelViewSet):
     # permission_classes = [permissions.IsAdminOrReadOnly,]
     queryset = models.Tv.objects.all()
@@ -42,6 +43,7 @@ class TvView(ModelViewSet):
 class TvProgramView(ModelViewSet):
     # permission_classes = [permissions.IsAdminOrReadOnly,]
     queryset = models.TvProgram.objects.all()
+
     def get_serializer_class(self):
         if self.request.method in SAFE_METHODS:
             return serializers.TvProgramDetailSerializer

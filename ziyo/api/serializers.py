@@ -1,58 +1,60 @@
 from rest_framework import serializers
-from rest_framework.serializers import ModelSerializer
-from django.contrib.auth.models import User
+
 from . import models
 
 
-class PhotoSerializer(ModelSerializer):
+class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Photo
         fields = '__all__'
-        read_only_fields=["thumb"]
+        read_only_fields = ["thumb"]
 
 
-class CategorySerializer(ModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
+    photo = serializers.
     class Meta:
         model = models.Category
         fields = '__all__'
 
-class CategoryDetailSerializer(ModelSerializer):
+
+class CategoryDetailSerializer(serializers.ModelSerializer):
     photo = PhotoSerializer(read_only=True)
+
     class Meta:
         model = models.Category
         fields = '__all__'
-        include = ['photo',]
-        
 
 
-class ArticleSerializer(ModelSerializer):
+class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Article
         fields = '__all__'
 
-class ArticleDetailSerializer(ModelSerializer):
+
+class ArticleDetailSerializer(serializers.ModelSerializer):
     photo = PhotoSerializer(many=True, read_only=True)
     category = CategorySerializer(many=True, read_only=True)
+
     class Meta:
         model = models.Article
         fields = '__all__'
-        include = ['photo', 'category',]
 
 
-class TvProgramSerializer(ModelSerializer):
+class TvProgramSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.TvProgram
         fields = '__all__'
 
-class TvProgramDetailSerializer(ModelSerializer):
+
+class TvProgramDetailSerializer(serializers.ModelSerializer):
     photo = PhotoSerializer(read_only=True)
+
     class Meta:
         model = models.TvProgram
         fields = '__all__'
-        include='photo'
 
 
-class TvSerializer(ModelSerializer):
+class TvSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Tv
         fields = '__all__'

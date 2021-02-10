@@ -9,3 +9,6 @@ PyJWT==2.0.0
 pytz==2020.5
 six==1.15.0
 sqlparse==0.4.1
+
+django-modeltranslation~=0.16.1
+django-filter~=2.4.0

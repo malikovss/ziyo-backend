@@ -1,9 +1,7 @@
-
-
 from pathlib import Path
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -16,7 +14,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -28,9 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
     'rest_framework',
-    'django_filters',
     'corsheaders',
     'modeltranslation',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -65,7 +62,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ziyo.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -75,7 +71,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -95,7 +90,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -109,7 +103,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
@@ -118,22 +111,22 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media/'
 HOSTNAME = "http://127.0.0.1:8000/"
-EXT=[".jpg",".png",".tiff","webp",".svg"]
+EXT = [".jpg", ".png", ".tiff", "webp", ".svg"]
 THUMB = {
-    "icon":{
-        "w":50,
-        "h":50,
-        "slug":"icon",
+    "icon": {
+        "w": 50,
+        "h": 50,
+        "slug": "icon",
     },
-    "small":{
-        "w":320,
-        "h":320,
-        "slug":"small",
+    "small": {
+        "w": 320,
+        "h": 320,
+        "slug": "small",
     },
-    "low":{
-        "w":640,
-        "h":640,
-        "slug":"low",
+    "low": {
+        "w": 640,
+        "h": 640,
+        "slug": "low",
     }
 }
 
@@ -141,9 +134,9 @@ REST_FRAMEWORK = {
     'DATETIME_FORMAT': '%s',
     'DEFAULT_PAGINATION_CLASS': 'api.pagination.CustomPageNumberPagination',
     'PAGE_SIZE': 10,
-    # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'rest_framework_simplejwt.authentication.JWTAuthentication',
-    # ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
@@ -171,6 +164,7 @@ CORS_ALLOW_HEADERS = [
 ]
 
 gettext = lambda s: s
+
 LANGUAGES = (
     ('uz', gettext('Uzbek')),
     ('en', gettext('English')),
