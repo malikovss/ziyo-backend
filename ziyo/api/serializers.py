@@ -11,7 +11,8 @@ class PhotoSerializer(serializers.ModelSerializer):
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    photo = serializers.
+    photo = PhotoSerializer(many=True)
+
     class Meta:
         model = models.Category
         fields = '__all__'
